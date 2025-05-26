@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Email Sent{% endblock %}
+
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+  <div class="text-center p-5 shadow rounded bg-white" style="max-width: 500px;">
+    <div class="mb-4">
+      <h2 class="text-success"> Email Sent!</h2>
+    </div>
+    <p class="lead">We've sent a verification link to:</p>
+    <p class="fw-bold text-primary">{{ email }}</p>
+    <p class="text-muted">Please check your inbox and verify your email to continue.</p>
+    <hr>
+    <p class="small text-muted">Didn’t get the email? <a href="{{ url_for('resend_verification') }}">Resend Verification</a></p>
+    <a href="{{ url_for('login') }}" class="btn btn-outline-primary mt-3">Back to Login</a>
+  </div>
+</div>
+{% endblock %}

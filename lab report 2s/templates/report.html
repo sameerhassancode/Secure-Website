@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block title %}Upload Lab Report{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <!-- Logo and Title -->
+    <div class="text-center mb-4">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Lab Logo" height="80">
+        <h2 class="mt-2">Medical Lab Report Upload</h2>
+    </div>
+
+    <!-- Form Start -->
+    <form method="POST" id="report-form">
+        {{ form.hidden_tag() }}
+
+        <div class="form-group mb-3">
+            {{ form.cnic.label(class="form-label") }}
+            {{ form.cnic(class="form-control", id="cnic-input") }}
+        </div>
+
+        <div class="form-group mb-3">
+            {{ form.patient_name.label(class="form-label") }}
+            {{ form.patient_name(class="form-control", id="name-field") }}
+        </div>
+
+        <div class="form-group mb-3">
+            {{ form.patient_phone.label(class="form-label") }}
+            {{ form.patient_phone(class="form-control", id="phone-field") }}
+        </div>
+
+        <div class="form-group mb-3">
+            {{ form.report_type.label(class="form-label") }}
+            {{ form.report_type(class="form-select") }}
+        </div>
+
+        <div class="form-group mb-4">
+            {{ form.report_data.label(class="form-label") }}
+            {{ form.report_data(class="form-control", rows="6") }}
+        </div>
+
+        <button type="submit" class="btn btn-success w-100">{{ form.submit.label.text }}</button>
+    </form>
+</div>
+
+<!-- AJAX Script -->
+<script>
+    document.getElementById("cnic-input").addEventListener("change", function () {
+        const cnic = this.value;
+        if (cnic.length === 13) {
+            fetch(`/get_user_info/${cnic}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (!data.error) {
+                        document.getElementById("name-field").value = data.username;
+                        document.getElementById("phone-field").value = data.phone;
+                    } else {
+                        document.getElementById("name-field").value = "";
+                        document.getElementById("phone-field").value = "";
+                        alert(" No user found with this CNIC.");
+                    }
+                });
+        }
+    });
+</script>
+{% endblock %}

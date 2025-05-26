@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="hero-section text-center">
+    <div class="overlay">
+        <h1 class="display-4 text-white">Welcome to 2S Diagnostic Lab Portal</h1>
+        <p class="lead text-white">Fast • Secure • Verified</p>
+        <a href="{{ url_for('login') }}" class="btn btn-primary btn-lg me-2">Login</a>
+        <a href="{{ url_for('register') }}" class="btn btn-outline-light btn-lg">Register</a>
+    </div>
+</div>
+{% endblock %}

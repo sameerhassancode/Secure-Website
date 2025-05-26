@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Lab Report</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            font-size: 14px;
+        }
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #000;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .header img {
+            float: left;
+            height: 60px;
+        }
+        .header h2 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .section-title {
+            font-weight: bold;
+            font-size: 16px;
+            margin-top: 25px;
+            border-bottom: 1px solid #888;
+            padding-bottom: 5px;
+        }
+        .data-block {
+            margin-top: 10px;
+            line-height: 1.6;
+        }
+        .footer {
+            margin-top: 40px;
+            font-size: 12px;
+            text-align: center;
+            color: #666;
+            border-top: 1px solid #aaa;
+            padding-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <img src="{{ url_for('static', filename='static/images/logo.png') }}" alt="Lab Logo">
+    <h2>2S Diagnostic Lab</h2>
+</div>
+
+<div class="section-title">Patient Information</div>
+<div class="data-block">
+    <strong>Name:</strong> {{ report.patient_name }}<br>
+    <strong>CNIC:</strong> {{ report.cnic }}<br>
+    <strong>Phone:</strong> {{ report.patient_phone }}
+</div>
+
+<div class="section-title">Report Details</div>
+<div class="data-block">
+    <strong>Report Type:</strong> {{ report.report_type }}<br>
+    <strong>Generated On:</strong> {{ report.generated_at.strftime('%d %B %Y, %I:%M %p') }}
+</div>
+
+<div class="section-title">Findings</div>
+<div class="data-block">
+    {{ report.report_data }}
+</div>
+
+<div class="footer">
+    This report was generated electronically by 2S Diagnostic Lab.
+</div>
+
+</body>
+</html>

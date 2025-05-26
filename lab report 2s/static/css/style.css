@@ -1,0 +1,67 @@
+body {
+    background: #f4f6f9;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.hero-section {
+    background: url('../images/lab-bg.jpg') no-repeat center center/cover;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.hero-section .overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 60px;
+    border-radius: 12px;
+}
+
+form {
+    background: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.1);
+}
+
+form .form-label {
+    font-weight: bold;
+}
+
+.navbar-brand img {
+    vertical-align: middle;
+    border-radius: 5px;
+}
+
+.navbar-brand span {
+    font-weight: bold;
+    color: #fff;
+    font-size: 1.25rem;
+}
+
+footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+.alert {
+    margin-top: 1rem;
+}
+
+.table th, .table td {
+    vertical-align: middle;
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        height: 60vh;
+        text-align: center;
+    }
+    .hero-section .overlay {
+        padding: 30px;
+    }
+}
